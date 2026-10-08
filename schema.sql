@@ -7,7 +7,7 @@ CREATE TABLE vare (
     navn TEXT NOT NULL UNIQUE,
     kategori TEXT,
     innholdPerKasse FLOAT,
-    innholdsenhet TEXT,
+    innholdsenhet TEXT NOT NULL CHECK (innholdsenhet IN ('kg', 'stk', 'liter')),
     PRIMARY KEY(id)
 );
 
