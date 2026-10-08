@@ -1,10 +1,22 @@
 import sqlite3
 
-connection = sqlite3.connect("lager.db")
+connect = sqlite3.connect("lager.db")
 
-rader = connection.execute("SELECT id, navn, kategori, innholdPerKasse, innholdsenhet FROM vare").fetchall()
+rader = connect.execute("""
+    SELECT pall.id, vare.navn, pall.antallKasser, pall.utlopsDato, pall.antallKasser * pall.innkjopsprisPerKasse AS verdi 
+    FROM pall
+    JOIN vare ON pall.vareId = vare.id
+    ORDER BY pall.utlopsDato
+""").fetchall()
 
 for rad in rader:
     print(rad)
 
-connection.close()
+total = connect.execute("""
+    SELECT SUM(antallKasser * innkjopsprisPerKasse)
+    FROM pall
+""").fetchone()[0]
+
+print(f"Total lagerverdi: {total} kr")
+
+connect.close()
