@@ -19,7 +19,7 @@ CREATE TABLE pall (
     innkjopsprisPerKasse FLOAT,
     mottattDato TEXT,
     utlopsDato TEXT,
-    opprinelsesland TEXT,
+    opprinnelsesland TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY(vareId) REFERENCES vare
 );
