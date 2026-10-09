@@ -49,6 +49,7 @@ CREATE TABLE ordrelinje (
     ordreId INTEGER NOT NULL,
     vareId INTEGER NOT NULL,
     antallKasser INTEGER NOT NULL CHECK (antallKasser > 0),
+    prisPerKasse INTEGER NOT NULL CHECK (prisPerKasse >= 0),
     PRIMARY KEY(id),
     FOREIGN KEY(ordreId) REFERENCES ordre,
     FOREIGN KEY(vareId) REFERENCES vare

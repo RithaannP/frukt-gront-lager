@@ -13,3 +13,18 @@ INSERT INTO butikk (navn)
 VALUES
     ('Rema 1000 Ammerud'),
     ('Rema 1000 Kalbakken');
+
+
+INSERT INTO ordre (butikkId, leveringsdato)
+VALUES
+    (1, '2026-10-09'),
+    (2, '2026-10-09');
+
+
+INSERT INTO ordrelinje (ordreId, vareId, antallKasser, prisPerKasse)
+VALUES
+    (1,1,10,120*1.3),
+    (1,2,5,150*1.3),
+    (2,1,8,120*1.3),
+    (2,2,3,150*1.3);
+
