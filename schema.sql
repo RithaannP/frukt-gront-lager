@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS pall;
 DROP TABLE IF EXISTS vare;
 DROP TABLE IF EXISTS butikk;
+DROP TABLE IF EXISTS svinn;
 
 CREATE TABLE vare (
     id INTEGER,
@@ -28,4 +29,14 @@ CREATE TABLE butikk (
     id INTEGER,
     navn TEXT NOT NULL UNIQUE,
     PRIMARY KEY(id)
+);
+
+CREATE TABLE svinn (
+    id INTEGER,
+    pallId INTEGER NOT NULL,
+    antallKasser INTEGER NOT NULL,
+    dato TEXT NOT NULL,
+    arsak TEXT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (pallId) REFERENCES pall
 );
